@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, redirect } from "next/navigation";
-import { UserButton, useUser } from "@clerk/nextjs";
+import { usePathname } from "next/navigation";
 
 import {
   LayoutDashboard,
@@ -18,27 +17,9 @@ export default function AdminLayout({
 }) {
   const pathname = usePathname();
 
-  const { user, isLoaded } = useUser();
+  // TEMP ROLE
+  const role = "admin";
 
-  // LOADING
-  if (!isLoaded) {
-    return null;
-  }
-
-  // NOT LOGGED IN
-  if (!user) {
-    redirect("/sign-in");
-  }
-
-  // ROLE
-  const role = user.publicMetadata.role;
-
-  // BLOCK CUSTOMER
-  if (role !== "admin" && role !== "staff") {
-    redirect("/");
-  }
-
-  // NAV ITEMS
   const navItems =
     role === "admin"
       ? [
@@ -78,10 +59,7 @@ export default function AdminLayout({
 
   return (
     <div className="min-h-screen flex bg-[#f5f5f5] text-black">
-      
-      {/* SIDEBAR */}
       <aside className="w-[260px] bg-white border-r border-zinc-200 px-5 py-10 flex flex-col justify-between">
-
         <div>
           <h1 className="text-5xl font-black leading-none mb-12">
             Time
@@ -121,27 +99,15 @@ export default function AdminLayout({
           </div>
         </div>
 
-        {/* USER */}
         <div className="mt-10 flex items-center gap-4 border border-zinc-200 rounded-2xl p-4 bg-white">
-          <UserButton />
-
           <div>
-            <p className="font-semibold">
-              {user.firstName || "User"}
-            </p>
-
-            <p className="text-sm text-zinc-500 capitalize">
-              {String(role)}
-            </p>
+            <p className="font-semibold">Admin</p>
+            <p className="text-sm text-zinc-500">{role}</p>
           </div>
         </div>
-
       </aside>
 
-      {/* MAIN */}
-      <main className="flex-1 p-10">
-        {children}
-      </main>
+      <main className="flex-1 p-10">{children}</main>
     </div>
   );
 }

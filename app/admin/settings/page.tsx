@@ -150,7 +150,7 @@ export default function SettingsPage() {
         </div>
 
         {/* DARK MODE */}
-        <button
+        {/* <button
           onClick={() => setDarkMode(!darkMode)}
           className={`
             h-[70px]
@@ -180,7 +180,7 @@ export default function SettingsPage() {
               Dark
             </>
           )}
-        </button>
+        </button> */}
 
       </div>
 
