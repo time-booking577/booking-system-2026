@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Booking {
+  id        Int      @id @default(autoincrement())
+  customer  String
+  service   String
+  time      String
+  staff     String
+  status    String
+  createdAt DateTime @default(now())
+}
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  phone     String
+  role      String
+  createdAt DateTime @default(now())
+}
+model Setting {
+  id            Int    @id @default(1)
+  businessName  String
+  email         String
+  phone         String
+  openTime      String
+  closeTime     String
+  hairCutPrice  Int
+  makeupPrice   Int
+  nailsPrice    Int
+  notifications Boolean @default(true)
+}
