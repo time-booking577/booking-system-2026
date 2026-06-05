@@ -423,14 +423,18 @@ export default function BookingsPage() {
               className="w-full h-14 border rounded-2xl px-4"
             />
 
-            <input
-              value={service}
-              onChange={(e) =>
-                setService(e.target.value)
-              }
-              placeholder="Service"
-              className="w-full h-14 border rounded-2xl px-4"
-            />
+            <select
+  value={service}
+  onChange={(e) =>
+    setService(e.target.value)
+  }
+  className="w-full h-14 border rounded-2xl px-4"
+>
+  <option value="">service</option>
+  <option value="Hair Cut">Hair Cut</option>
+  <option value="Make Up">Make Up</option>
+  <option value="Manicure">Manicure</option>
+</select>
 
             <select
               value={time}

@@ -149,38 +149,6 @@ export default function SettingsPage() {
           </p>
         </div>
 
-        {/* DARK MODE */}
-        {/* <button
-          onClick={() => setDarkMode(!darkMode)}
-          className={`
-            h-[70px]
-            px-8
-            rounded-2xl
-            flex
-            items-center
-            gap-3
-            text-xl
-            font-bold
-            transition-all
-            ${
-              darkMode
-                ? "bg-white text-black"
-                : "bg-black text-white"
-            }
-          `}
-        >
-          {darkMode ? (
-            <>
-              <Sun size={24} />
-              Light
-            </>
-          ) : (
-            <>
-              <Moon size={24} />
-              Dark
-            </>
-          )}
-        </button> */}
 
       </div>
 
