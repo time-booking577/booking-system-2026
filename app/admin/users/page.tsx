@@ -17,9 +17,9 @@ export default async function Page() {
     String(user?.publicMetadata?.role)
       .toLowerCase();
 
-  if (role !== "admin") {
-    redirect("/admin");
-  }
+  // if (role !== "admin") {
+  //   redirect("/admin");
+  // }
 
   return <UsersClientPage />;
 }
