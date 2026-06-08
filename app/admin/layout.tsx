@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { UserButton, useUser } from "@clerk/nextjs";
 
 import {
   LayoutDashboard,
@@ -16,6 +17,7 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+ const { user } = useUser();
 
   // TEMP ROLE
   const role = "admin";
@@ -100,11 +102,18 @@ export default function AdminLayout({
         </div>
 
         <div className="mt-10 flex items-center gap-4 border border-zinc-200 rounded-2xl p-4 bg-white">
-          <div>
-            <p className="font-semibold">Admin</p>
-            <p className="text-sm text-zinc-500">{role}</p>
-          </div>
-        </div>
+  <UserButton />
+
+  <div>
+    <p className="font-semibold">
+      {user?.fullName || "User"}
+    </p>
+
+    <p className="text-sm text-zinc-500">
+      {user?.primaryEmailAddress?.emailAddress}
+    </p>
+  </div>
+</div>
       </aside>
 
       <main className="flex-1 p-10">{children}</main>
